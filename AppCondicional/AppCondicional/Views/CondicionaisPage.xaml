@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:util="clr-namespace:AppCondicional.Util"
+             mc:Ignorable="d"
+             x:Class="AppCondicional.Views.CondicionaisPage"
+             Title="Condicionais"
+             >
+    
+    <StackLayout BackgroundColor="White">
+        <ListView ItemsSource="{Binding Items}"
+              CachingStrategy="RecycleElement"
+              RowHeight="60"
+              BackgroundColor="White"
+              SeparatorColor="#374040"
+              ItemTapped="ListView_ItemTapped">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Editar" Clicked="MenuItemEditar_Clicked"/>
+                            <MenuItem Text="Excluir" Clicked="MenuItemExcluir_Clicked"/>
+                        </ViewCell.ContextActions>
+                        <Grid Padding="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>                                
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Descricao}"></Label>
+                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding DataHora, StringFormat='{0:dd/MM/yyyy}'}"></Label>
+                            <Label Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" Grid.Column="1" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Situacao}" Value="0">
+                                        <Setter Property="Text" Value="Pendente" />
+                                        <Setter Property="TextColor" Value="Green" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding Situacao}" Value="1">
+                                        <Setter Property="Text" Value="Finalizado" />
+                                        <Setter Property="TextColor" Value="Orange" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+        <Button x:Name="btnAdicionar" 
+                Text="+" 
+                BorderWidth="2" 
+                CornerRadius="50" 
+                WidthRequest="60" 
+                HeightRequest="60"
+                HorizontalOptions="EndAndExpand" 
+                Margin="10" 
+                BackgroundColor="MediumSeaGreen"
+                TextColor="White"
+                FontSize="23"
+                Clicked="btnAdicionar_Clicked">
+        </Button>
+    </StackLayout>
+</ContentPage>

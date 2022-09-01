@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AppCondicional.Views.CondicionalItensPage"
+             Title="Lista de produtos">
+
+    
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="5, 5, 5, 0" BackgroundColor="WhiteSmoke" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"></RowDefinition>                   
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label FontAttributes="Bold" Text="Condicional" Grid.Row="0" Grid.Column="0"/>
+                <Label x:Name="lbCondicional" Text="..." Grid.Row="0" Grid.Column="1"/>
+                <Label FontAttributes="Bold" Text="Qtde" Grid.Row="0" Grid.Column="2"/>
+                <Label x:Name="lbQtdeItens" Text="0" Grid.Row="0" Grid.Column="3"/>
+            </Grid>
+            
+            <Label x:Name="lbLinha" Text="" HeightRequest="1" BackgroundColor="DodgerBlue" Margin="0" Padding="0"/>
+            <ListView x:Name="listViewItens" ItemsSource="{Binding Items}"
+              CachingStrategy="RecycleElement"
+              RowHeight="60"
+              BackgroundColor="White"
+              SeparatorColor="WhiteSmoke"
+              ItemTapped="listViewItens_ItemTapped">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Tapped="ViewCell_Tapped" >
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Excluir" Clicked="MenuItem_Clicked"/>
+                            </ViewCell.ContextActions>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"></RowDefinition>
+                                    <RowDefinition Height="25"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="30"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Descricao}"></Label>
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Preco, StringFormat='{0:C}'}"></Label>                                
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="btnAdicionar" 
+                Text="Adicionar produto" 
+                BorderWidth="2" 
+                CornerRadius="10" 
+                WidthRequest="100" 
+                HeightRequest="60"
+                HorizontalOptions="EndAndExpand" 
+                Margin="10" 
+                BackgroundColor="MediumSeaGreen"
+                TextColor="White"
+                FontSize="13"
+                Clicked="btnAdicionar_Clicked">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

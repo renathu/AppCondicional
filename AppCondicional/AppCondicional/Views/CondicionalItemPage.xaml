@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AppCondicional.Views.CondicionalItemPage"
+             Title="Produto">
+    
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Produto" Margin="5, 0, 5, 0"/>
+            <Editor x:Name="tbxProduto" Margin="5, 0, 5, 0"></Editor>
+            <Label Text="Código de barra" Margin="5, 0, 5, 0"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Editor x:Name="tbxCodigoBarra" Grid.Row="0" Grid.Column="0"></Editor>
+                <Button x:Name="btnCodigoBarra" Text="Ler" Grid.Row="0" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill" Clicked="btnCodigoBarra_Clicked"></Button>
+            </Grid>                             
+            <Label Text="Preço" Margin="5, 0, 5, 0"/>
+            <Entry Placeholder="Money" x:Name="tbxPreco" Keyboard="Numeric" Text="0,00" Margin="5, 0, 0, 0" HorizontalOptions="StartAndExpand" WidthRequest="100" HorizontalTextAlignment="End"></Entry>
+            <Button x:Name="btnTirarFoto" Text="Tirar foto" BackgroundColor="WhiteSmoke" Clicked="btnTirarFoto_Clicked"></Button>
+            <Frame BorderColor="WhiteSmoke" CornerRadius="10" Margin="0,10,0,0"        
+               HasShadow="True">
+                <Image x:Name="imageProduto" HeightRequest="100" HorizontalOptions="Center"></Image>
+            </Frame>
+            <Button x:Name="btnExcluirFoto" Text="Remover foto" Font="10" Clicked="btnExcluirFoto_Clicked"></Button>
+            <Button x:Name="btnSalvar" Text="Salvar" Clicked="btnSalvar_Clicked" CornerRadius="10" BackgroundColor="MediumSeaGreen" TextColor="White" Margin="5"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

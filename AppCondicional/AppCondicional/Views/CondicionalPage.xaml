@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AppCondicional.Views.CondicionalPage"
+             Title="Condicional">
+
+    
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lbDescricao" Text="Descrição" Margin="5, 0, 5, 0"/>
+            <Editor x:Name="tbxDescricao" Text="" Margin="5, 0, 5, 0"/>
+            <Label x:Name="lbData" Text="Data" Margin="5, 0, 5, 0"/>
+            <DatePicker x:Name="datePicker" Date="{x:Static system:DateTime.Today}" Format="dd/MM/yyyy" Margin="5, 0, 5, 0" />
+            <Label x:Name="lbNome" Text="Nome" Margin="5, 0, 5, 0"/>
+            <Editor x:Name="tbxNome" Text="" Margin="5, 0, 5, 0"/>
+            <Label x:Name="lbEndereco" Text="Endereço" Margin="5, 0, 5, 0"/>
+            <Editor x:Name="tbxEndereco" Text="" Margin="5, 0, 5, 0"/>
+            <Label x:Name="lbSituacao" Text="Situação" Margin="5, 0, 5, 0"/>
+            <Picker x:Name="cbxSituacao" Margin="5, 0, 5, 0">
+                <Picker.Items>
+                    <x:String>Pendente</x:String>
+                    <x:String>Finalizado</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button x:Name="btnSalvar" Text="Salvar" Clicked="btnSalvar_Clicked" CornerRadius="10" BackgroundColor="MediumSeaGreen" TextColor="White" Margin="5"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
